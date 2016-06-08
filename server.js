@@ -20,8 +20,8 @@ app.use(express.static(path.join(__dirname + '/client')));
 // require('./server/config/mongoose.js');
 // require('./server/config/routes.js')(app);
 
-app.listen(process.env.PORT || 2020, function(req, res) {
-	console.log("We are now listening on port 2020");
+app.listen(process.env.PORT || 2030, function(req, res) {
+	console.log("We are now listening on port 2030");
 });
 
 app.post('/mail', function(req, res){
