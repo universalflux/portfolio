@@ -1,0 +1,233 @@
+.expansion {
+	
+	height: 410px;
+	width: 740px;
+    -webkit-transition: height 2s;
+	transition: height 2s;
+}
+
+header {
+	margin-bottom: 50px;
+}
+
+#heading {
+	transition: 2s ease-in;
+
+}
+
+.heading {
+	margin-bottom: -100px;
+	z-index:  -100;
+}
+
+#top_title {
+	margin-bottom: -15px;
+}
+
+#bottom_title {
+	margin-top: -10px;
+}
+
+#top_title_text {
+	font-size: 71px;
+	font-family: 'Montserrat', sans-serif;
+
+}
+#bottom_title_text {
+	font-family: 'Montserrat Subrayada', sans-serif;
+	font-size: 38px;
+}
+
+#about {
+	margin: 0 auto 0 auto;
+}
+
+#about:hover {
+	width: 30px;
+	height: 30px;
+}
+
+.menu {
+	margin: 0 auto 0;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 5px solid #DBDEEE;
+	-moz-transition: width 1s, height 1s;
+	-webkit-transition: width 1s, height 1s;
+	transition: width 1s, height 1s;
+}
+
+.menu:hover {
+	width: 30px;
+	height: 30px;
+}
+
+
+#contact {
+	float: right;
+	display:inline-block;
+}
+
+#portfolio {
+	float: left;
+	display:inline-block;
+}
+
+#bottom_container {
+	margin: 0 auto 0 auto;
+	width: 800px;
+}
+
+#king_triangle {
+	width: auto;
+	height: auto;
+	margin: 0 auto 0 auto;
+	transition: 2s ease-in;
+}
+
+svg polygon {
+	-webkit-transition: 2s ease-in;
+	-webkit-animation-name: transparentAlert;
+	-webkit-animation-duration: 5s;
+	-webkit-animation-iteration-count: infinite;
+	animation-name: transparentAlert;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+
+#rainbow {
+	height: 695px;
+	width: 730px;
+	-webkit-animation-name: colorSlide;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	animation-name: colorSlide;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	background-opacity: 0.3;
+	overflow: hidden;
+}
+
+.rotated {
+	margin: 0 auto 0 auto;
+	max-width: 900px ;
+	max-height: 800px;
+	-webkit-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	z-index: 100;
+}
+
+#main-content {
+	height: 700px;
+	width: 650px;
+	transform: rotate(-270deg);
+}
+
+
+#about-me{
+	width: 650px;
+	height: 700px;
+    overflow-x: scroll;
+}
+
+#about-me::-webkit-scrollbar {
+	display: none;
+}
+
+.paragraph-end {
+	margin-bottom: 80px;
+}
+
+.waddup {
+	font-family: 'Montserrat', sans-serif;
+	display: none;
+}
+
+.fadeOut {
+	visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s 2s, opacity 2s linear;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+#sub_triangle {
+
+}
+.valign-wrapper {
+}
+
+#container {
+	margin: 0 auto 0 auto;
+	width: 1000px;
+	height: auto;
+}
+
+form {
+	width: 600px;
+}
+
+textarea {
+	height: 300px;
+	font-size: 20px;
+}
+
+@keyframes colorSlide {
+	0% {border-top: 10px solid red;}
+	10% {border-top: 10px solid orange;}
+	20% {border-top: 9px solid orange;}
+	30% {border-top: 8px solid yellow;}
+	40% {border-top: 7px solid yellow;}
+	50% {border-top: 6px solid green;}
+	60% {border-top: 5px solid green;}
+	70% {border-top: 6px solid blue;}
+	80% {border-top: 7px solid blue;}
+	90% {border-top: 8px solid purple;}
+	100% {border-top: 9px solid purple;}
+
+}
+
+@-webkit-keyframes colorSlide {
+	0% {border-top: 8px solid red;}
+	10% {border-top: 10px solid orange;}
+	20% {border-top: 12px solid orange;}
+	30% {border-top: 10px solid yellow;}
+	40% {border-top: 12px solid yellow;}
+	50% {border-top: 10px solid green;}
+	60% {border-top: 12px solid green;}
+	70% {border-top: 14px solid blue;}
+	80% {border-top: 12px solid blue;}
+	90% {border-top: 10px solid purple;}
+	100% {border-top: 6px solid purple;}
+
+}
+
+@keyframes transparentAlert {
+	0% {opacity: 1.0;}
+	10% {opacity: 1.0;}
+	20% {opacity: 0.9;}
+	30% {opacity: 0.8;}
+	40% {opacity: 0.7;}
+	50% {opacity: 0.6;}
+	60% {opacity: 0.5;}
+	70% {opacity: 0.6;}
+	80% {opacity: 0.7;}
+	90% {opacity: 0.8;}
+	100% {opacity: 0.9;}
+
+
+}
+
+@-webkit-keyframes transparentAlert {
+	0% {opacity: 1.0;}
+	10% {opacity: 0.8;}
+	20% {opacity: 0.6;}
+	30% {opacity: 0.4;}
+	40% {opacity: 0.1;}
+	50% {opacity: 0.0;}
+	60% {opacity: 0.2;}
+	70% {opacity: 0.4;}
+	80% {opacity: 0.6;}
+	90% {opacity: 0.8;}
+	100% {opacity: 0.9;}
+}

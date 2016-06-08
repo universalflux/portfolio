@@ -1,0 +1,61 @@
+
+<html>
+      <head>
+        <title> Roger Tafoya | Full-Stack Engineer </title>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="style/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+      </head>
+
+    <script>
+        var fluxApp = angular.module('fluxApp', ['ngRoute']);
+    </script>
+<body class = "purple darken-2">
+    <header>
+    <div class = "row center">
+
+        <div id = "a" class = "col s2 purple-text text-lighten-5">
+            <div id = "a-a"> 
+                <h1 id = "a-a-t"> 
+                    Roger 
+                </h1>
+            </div>
+            <div id = "a-b"> 
+                <h1 id = "a-b-t"> 
+                    Tafoya 
+                </h1>
+            </div>
+        </div>
+
+        <div id = "b" class = "col s3 purple-text text-lighten-5">
+            <div id = "b-a"> 
+                <h1 id = "b-a-t" > 
+                    Full_Stack 
+                <h1>
+            </div>
+            <div id = "b-b"> 
+                <h1 id = "b-b-t"> 
+                    Engineer 
+                </h1>
+            </div>
+        </div>
+
+        <div id = "c" class = "col s1 purple-text text-lighten-5">
+            <div id = "c-a"> 
+                <h1 id = "c-a-t"> 
+                    LA
+                </h1>
+            </div>
+        </div>
+
+    </div>
+    </header>
+    <div id = "div_b" class = "purple darken-3">
+        <h1> Hello </h1>
+    </div>
+</body>
+</html>

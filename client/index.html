@@ -1,0 +1,234 @@
+<html>
+<head>
+        <title> Roger Tafoya | Full-Stack Engineer </title>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+        <link href='https://fonts.googleapis.com/css?family=VT323|Montserrat+Subrayada|Monoton|Montserrat' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="style/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        
+</head>
+
+<script>
+	var portfolioApp = angular.module('portfolioApp', ['ngRoute','ngAnimate']);
+
+	portfolioApp.config(function($routeProvider) {
+		$routeProvider
+		.when('/about', {
+			templateUrl: 'partials/about.html',
+			controller: 'clientsController'
+		})
+		.when('/contact', {
+			templateUrl: 'partials/contact.html',
+			controller: 'clientsController'
+		})
+		.when('/work', {
+			templateUrl: 'partials/work.html',
+			controller: 'clientsController'
+		})
+		.when('mail', {
+			controller: 'clientsController'
+		})
+	})
+
+	portfolioApp.factory('ClientFactory', function($http){
+		var factory = {};
+		var clients = [];
+
+		factory.create = function(info){
+			$http.post('/mail', info);
+		}
+
+		return factory;
+	})
+
+	portfolioApp.controller('clientsController', function($timeout, $scope, ClientFactory, $location) {
+		var triangle;
+		var menu_list;
+		var sub_tri;
+		var heading;
+		var main_content;
+		var aboutMe;
+		var wadDup;
+
+		$scope.shootMail = function() {
+			console.log('Hello');
+			ClientFactory.create($scope.client);
+			$scope.client = {};
+		};
+	
+		$scope.safeApply = function(fn) {
+	  	var phase = this.$root.$$phase;
+	  	if(phase == '$apply' || phase == '$digest') {
+	   		if(fn && (typeof(fn) === 'function')) {
+	      		fn();
+	    		}
+	  		} else {
+	    	this.$apply(fn);
+	 	 }
+		}
+
+		$scope.loadFirst = function(data){
+			main_content = document.getElementById('main-content');
+			if (data.select == "about"){
+				$location.path('/about');
+				console.log(data.select);
+			}
+			if (data.select == "portfolio"){
+				$location.path('/work');
+			}
+			if (data.select == "contact"){
+				$location.path('/contact');
+
+			}
+		}
+
+		$scope.triFlip = function() {
+			console.log();
+			main_content = document.getElementById('main-content');
+			menu_list = document.getElementsByClassName('menu');
+			triangle = document.getElementById('king_triangle');
+			triangle.className += ' rotated';
+			for (var y = 0; y < menu_list.length; y++) {
+			menu_list[y].className += ' fadeOut';
+			};
+			title_text = document.getElementsByTagName("header");
+			title_text[0].className += ' fadeOut';	
+			sub_tri = document.getElementsByClassName('expansion');
+			heading = document.getElementById('heading');
+			sub_tri[0].style.height = '1100px';
+			heading.className += ' heading';
+			main_content.classList.remove('ng-hide');
+
+
+		}
+
+	});
+
+</script>
+<script>
+$(document).ready(function() {
+	function animateMenu() { 
+	$('.menu, #king_triangle, #about').animate({'marginTop' : "-=15px"}, 2000);
+	$('.menu, #king_triangle, #about').animate({'marginTop' : "+=15px"}, 2000, animateMenu);
+	}
+	animateMenu();
+
+
+	var about_div = document.getElementById('about');
+	var portfolio_div = document.getElementById('portfolio');
+	var contact_div = document.getElementById('contact');
+	var menu_items = document.getElementsByClassName('menu');
+	var domList;
+
+	
+	for (var x = 0; x < menu_items.length; x++) {
+		menu_items[x].addEventListener("mouseout", contactOut, false);
+		menu_items[x].addEventListener("click", slideLeft, false);
+		menu_items[x].addEventListener("click", showContent, false);
+	}
+
+	var icons = document.getElementById('icons');
+
+	contact_div.addEventListener("mouseover", contactOver, false);
+	about_div.addEventListener("mouseover", contactOver, false);
+	portfolio_div.addEventListener("mouseover", contactOver, false);
+
+	function slideLeft (element)  {
+		$('#king_triangle').animate({'marginLeft' : '-150px'}, 2000);
+
+		if (element.currentTarget == about_div) {
+			icons.innerHTML = 'info';
+			domList = 'infoVar';
+		}
+		if (element.currentTarget == contact_div){
+			icons.innerHTML = 'phone';
+			domList = 'phoneVar';
+		}
+		if (element.currentTarget == portfolio_div){
+			icons.innerHTML = 'code';
+			domList = 'codeVar';
+		}
+	}
+
+	function contactOver (element) {
+
+		if (element.currentTarget == about_div) {
+			icons.innerHTML = 'info';
+		}
+		if (element.currentTarget == contact_div){
+			icons.innerHTML = 'phone';
+		}
+		if (element.currentTarget == portfolio_div){
+			icons.innerHTML = 'code';
+		}
+}
+
+	function contactOut(){
+		if (domList) {
+			if (domList == 'infoVar'){
+				icons.innerHTML = 'info';
+			}
+			if (domList == 'phoneVar'){
+				icons.innerHTML = 'phone';
+			}
+			if (domList == 'codeVar'){
+				icons.innerHTML = 'code';
+			}
+		} else {
+			icons.innerHTML = 'visibility';
+		}
+	}
+
+	function showContent () {
+		$('.waddup').fadeIn(8000);
+	}
+});
+
+</script>
+
+<body ng-controller="clientsController" ng-app = "portfolioApp" class = "black">
+<div id = "container" class = "center">
+	<header id = "heading">
+	<div id = "top_title" class = "col s12 center">
+		<h1 class = "white-text" id = "top_title_text"> Roger Tafoya </h1>
+	</div>
+	<div id = "bottom_title" class = "col s12 center">
+		<h3 id = "bottom_title_text" class = "grey-text text-lighten-1"> full_stack engineer </h3>
+	</div>
+	</header>
+	<a href = "#/about"><div ng-mouseover = "loadFirst({'select':'about'})" ng-click = "triFlip()" class = "menu" id = "about">
+		
+	</div></a>	
+	<div class = "center" id="king_triangle">
+		<svg id="sub_triangle" class = "center large material-icons expansion">
+			<polygon points = "370,15 720,400 20,400" style = "fill: transparent; stroke: #DBDEEE; stroke-width: 12px" />
+			<foreignobject x = "320" y = "220">
+				
+				<i id="icons" class="large material-icons grey-text text-lighten-1"> visibility </i>
+
+			</foreignobject>
+			<foreignobject x = "5" y = "406">
+				<div class = "purple darken-4" id = "rainbow">
+					<div id = "main-content" class = "ng-hide" ng-view="">
+						
+					</div>
+				</div>
+			</foreignobject>
+		</svg>
+	</div>
+	<div id = "bottom_container">
+			<a href = "#/work"> <div ng-mouseover="loadFirst({'select':'portfolio'})" ng-click="triFlip()" class = "menu" id = "portfolio">
+			</div> </a>
+
+			<a href = "#/contact"><div ng-mouseover="loadFirst({'select':'contact'})" ng-click="triFlip()" class = "menu" id = "contact">
+			</div> </a>
+	</div>
+</div>
+
+</body>
+</html>
